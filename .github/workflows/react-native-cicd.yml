@@ -30,14 +30,16 @@ jobs:
       - name: 🏗 Checkout repository
         uses: actions/checkout@v4
 
+      # 1. Habilitar Corepack PRIMERO
+      - name: Enable Corepack
+        run: corepack enable
+
+      # 2. Configurar Node.js y la caché DESPUÉS
       - name: 🏗 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: "yarn"
-
-      - name: Enable Corepack
-        run: corepack enable
 
       - name: 📦 Get yarn cache directory path
         id: yarn-cache-dir-path
